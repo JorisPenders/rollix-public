@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rollix</title>
+    <meta
+      name="description"
+      content="Wheelchair and mobility accessible accommodation across Europe — static MVP demo."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="nav">
+        <span class="nav-brand">Rollix</span>
+        <span class="nav-note text-muted">Static demo · sample data</span>
+        <a
+          href="https://www.data.gouv.fr/fr/datasets/etablissements-et-lieux-labellises-tourisme-handicap/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Data source ↗
+        </a>
+      </header>
+
+      <div class="app-body">
+        <aside class="sidebar">
+          <div class="sidebar-controls">
+            <p class="subtitle text-muted">
+              Wheelchair and mobility accessible accommodation across Europe,
+              sourced from official open datasets and accessibility-focused
+              directories in multiple countries. This static build ships with
+              a small bundled sample dataset (<code>data/accommodations.json</code>)
+              instead of a live backend, for demoing the front end.
+            </p>
+
+            <div class="field">
+              <label for="search">Search by name, town or postcode</label>
+              <input
+                class="input"
+                id="search"
+                type="text"
+                placeholder="e.g. Le Ty Nadan, Argelès, 66700"
+              />
+            </div>
+
+            <div class="field">
+              <label>Type of accommodation</label>
+              <div class="checkbox-list" id="category-filters"></div>
+            </div>
+
+            <div class="field">
+              <label>Accessibility</label>
+              <div class="checkbox-list" id="accessibility-filters">
+                <label class="checkbox-row">
+                  <input type="checkbox" data-filter-key="moteur" />
+                  Motor / wheelchair
+                </label>
+                <label class="checkbox-row">
+                  <input type="checkbox" data-filter-key="visuel" />
+                  Visual
+                </label>
+                <label class="checkbox-row">
+                  <input type="checkbox" data-filter-key="auditif" />
+                  Hearing
+                </label>
+                <label class="checkbox-row">
+                  <input type="checkbox" data-filter-key="mental" />
+                  Cognitive
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <p class="result-count text-muted" id="result-count">
+            Showing 0 of 0 in view
+          </p>
+
+          <div class="accommodation-list" id="accommodation-list"></div>
+        </aside>
+
+        <main class="map-container">
+          <div id="error-banner" class="error" hidden></div>
+          <div id="map"></div>
+          <div class="map-legend">
+            <div class="map-legend-row">
+              <span class="pin-swatch pin-swatch-camping" aria-hidden="true"></span>
+              Campsite
+            </div>
+            <div class="map-legend-row">
+              <span class="pin-swatch pin-swatch-bungalow" aria-hidden="true"></span>
+              Bungalow
+            </div>
+            <div class="map-legend-row">
+              <span class="pin-swatch pin-swatch-mixed" aria-hidden="true"></span>
+              Mixed / other
+            </div>
+          </div>
+        </main>
+
+        <aside class="detail-panel" id="detail-panel" hidden></aside>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
