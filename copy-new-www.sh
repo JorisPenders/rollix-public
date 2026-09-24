@@ -23,5 +23,5 @@ if git diff --cached --quiet; then
   exit 0
 fi
 
-git commit -m "updated version $(date +%Y-%m-%d)"
+git commit -m "updated version $(date "+%Y-%m-%d %H:%M:%S %Z")"
 git push
